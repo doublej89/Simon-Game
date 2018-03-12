@@ -1,3 +1,7 @@
+body {
+	text-align: center;
+}
+
 .container {
 	width: 640px;
 	height: 640px;
@@ -5,4 +9,33 @@
 	margin-top: 70px;
 	border: solid 5px black;
 	border-radius: 50%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 }
+
+.pad {
+	width: 310px;
+	height: 310px;
+	border: solid 5px black;
+}
+
+.pad-green {
+	background-color: green;
+	border-radius: 100% 0 0 0;
+}
+
+.pad-red {
+	background-color: red;
+	border-radius: 0 100% 0 0;
+}
+
+.pad-blue {
+	background-color: blue;
+	border-radius: 0 0 0 100%;
+}
+
+.pad-yellow {
+	background-color: yellow;
+	border-radius: 0 0 100% 0;
+}
+
