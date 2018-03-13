@@ -1,16 +1,15 @@
-body {
-	text-align: center;
-}
+
 
 .container {
 	width: 640px;
 	height: 640px;
-	margin: 0 auto;
-	margin-top: 70px;
+	margin: auto auto;
 	border: solid 5px black;
 	border-radius: 50%;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	z-index: 0;
+	position: relative;
 }
 
 .pad {
@@ -38,4 +37,95 @@ body {
 	background-color: yellow;
 	border-radius: 0 0 100% 0;
 }
+
+.controls-display {
+	width: 320px;
+	height: 320px;
+	border-radius: 50%;
+	border: solid 5px black;
+	background-color: white;
+	top: 160px;
+	left: 160px;
+	position: absolute;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.title {
+	font-size: 64px;
+	grid-column: 1/4;
+	align-self: center;
+	justify-self: center;
+	padding-top: 10px;
+}
+
+.counter {
+	height: 48px;
+	width: 64px;
+	text-align: center;
+	color: white;
+	background-color: black;
+	border-radius: 20%;
+	border: solid 2px black;
+	justify-self: center;
+	font-size: 36px;
+	line-height: 1.4em;
+	align-self: end;
+	margin-bottom: 10px;
+}
+
+.control-btns {
+	height: 48px;
+	width: 48px;
+	border-radius: 50%;
+	justify-self: center;
+	border: solid 2px black;
+	align-self: end;
+	margin-bottom: 10px; 
+}
+
+.start {
+	background-color: red;
+}
+
+.strict {
+	background-color: yellow;
+}
+
+.control-labels {
+	margin: 0;
+	padding: 0;
+	justify-self: center;
+	align-self: start;
+}
+
+.switch {
+	grid-column: 1/4;
+	justify-self: center;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center; 
+}
+
+.off {
+	justify-self: end;
+}
+
+.outer {
+	width: 60px;
+	height: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: black;
+	border: solid 1px grey;
+}
+
+.inner {
+	width: 30px;
+	height: 30px;
+	background-color: blue
+}
+
+
 
