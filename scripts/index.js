@@ -5,44 +5,84 @@ const YELLOW = 3;
 
 var givenSeq = [];
 var playerSeq = [];
+var step = 0;
 
 $(document).ready(function() {
-	var step = 4;
-
 	$('.start').click(function(event) {
-		//step++;
+		step++;
 		$('.counter').text(step);
-		padHighlightAndSound(step);
+		var randomNum = Math.floor(Math.random()*4);
+		givenSeq.push(randomNum);
+		padHighlightAndSound();
+	});
+
+	$('.pad').click(function(event) {
+			
+		var color = $(this).attr('class').split(' ')[1];
+		if (color === 'red') {
+			$(this).addClass('red-active');
+			setTimeout(function() {
+				$(this).removeClass('red-active');
+			}.bind($(this)), 500);
+			playerSeq.push(RED);
+		} else if (color === 'green') {
+			$(this).addClass('green-active');
+			setTimeout(function() {
+				$(this).removeClass('green-active');
+			}.bind($(this)), 500);
+			playerSeq.push(GREEN);
+		} else if (color === 'blue') {
+			$(this).addClass('blue-active');
+			setTimeout(function() {
+				$(this).removeClass('blue-active');
+			}.bind($(this)), 500);
+			playerSeq.push(BLUE);
+		} else if (color === 'yellow') {
+			$(this).addClass('yellow-active');
+			setTimeout(function() {
+				$(this).removeClass('yellow-active');
+			}.bind($(this)), 500);
+			playerSeq.push(YELLOW);
+		}
+		if (step > 0 && playerSeq.length === step && JSON.stringify(givenSeq) === JSON.stringify(playerSeq)) {
+			step++;
+			$('.counter').text(step);
+			playerSeq = [];
+			var randomNum = Math.floor(Math.random()*4);
+			givenSeq.push(randomNum);
+			padHighlightAndSound();
+		} else if (step > 0 && playerSeq.length === step) {
+			playerSeq = [];
+			padHighlightAndSound();
+		}
 	});
 });
 
-function padHighlightAndSound(step) {
+function padHighlightAndSound() {
 	var i = 0;
 	var sequenceInterval = setInterval(function() {
 		if (i === step) {
 			clearInterval(sequenceInterval);
-		} else {
-			var randomNum = Math.floor(Math.random()*4);
-			givenSeq.push(randomNum);
-			if (givenSeq[givenSeq.length-1] === RED) {
-				$('.pad-red').addClass('red-active');
+		} else {		
+			if (givenSeq[i] === RED) {
+				$('.red').addClass('red-active');
 				setTimeout(function() {
-					$('.pad-red').removeClass('red-active');
+					$('.red').removeClass('red-active');
 				}, 500);
-			} else if (givenSeq[givenSeq.length-1] === GREEN) {
-				$('.pad-green').addClass('green-active');
+			} else if (givenSeq[i] === GREEN) {
+				$('.green').addClass('green-active');
 				setTimeout(function() {
-					$('.pad-green').removeClass('green-active');
+					$('.green').removeClass('green-active');
 				}, 500);
-			} else if (givenSeq[givenSeq.length-1] === BLUE) {
-				$('.pad-blue').addClass('blue-active');
+			} else if (givenSeq[i] === BLUE) {
+				$('.blue').addClass('blue-active');
 				setTimeout(function() {
-					$('.pad-blue').removeClass('blue-active');
+					$('.blue').removeClass('blue-active');
 				}, 500);
-			} else if (givenSeq[givenSeq.length-1] === YELLOW) {
-				$('.pad-yellow').addClass('yellow-active');
+			} else if (givenSeq[i] === YELLOW) {
+				$('.yellow').addClass('yellow-active');
 				setTimeout(function() {
-					$('.pad-yellow').removeClass('yellow-active');
+					$('.yellow').removeClass('yellow-active');
 				}, 500);
 			}  
 			i++;

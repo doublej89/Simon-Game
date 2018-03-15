@@ -18,7 +18,7 @@
 	border: solid 5px black;
 }
 
-.pad-green {
+.green {
 	background-color: green;
 	border-radius: 100% 0 0 0;
 }
@@ -27,7 +27,7 @@
 	background-color: #004C00 !important;
 }
 
-.pad-red {
+.red {
 	background-color: red;
 	border-radius: 0 100% 0 0;
 }
@@ -36,7 +36,7 @@
 	background-color: #990000 !important;
 }
 
-.pad-blue {
+.blue {
 	background-color: blue;
 	border-radius: 0 0 0 100%;
 }
@@ -45,7 +45,7 @@
 	background-color: #00007F !important;
 }
 
-.pad-yellow {
+.yellow {
 	background-color: yellow;
 	border-radius: 0 0 100% 0;
 }
