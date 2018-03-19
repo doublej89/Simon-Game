@@ -16,29 +16,32 @@ $(document).ready(function() {
 		padHighlightAndSound();
 	});
 
-	$('.pad').click(function(event) {
-			
+	$('.pad').click(function(event) {		
 		var color = $(this).attr('class').split(' ')[1];
 		if (color === 'red') {
 			$(this).addClass('red-active');
+			playSound('audio/simonSound1.mp3').play();
 			setTimeout(function() {
 				$(this).removeClass('red-active');
 			}.bind($(this)), 500);
 			playerSeq.push(RED);
 		} else if (color === 'green') {
 			$(this).addClass('green-active');
+			playSound('audio/simonSound2.mp3').play();
 			setTimeout(function() {
 				$(this).removeClass('green-active');
 			}.bind($(this)), 500);
 			playerSeq.push(GREEN);
 		} else if (color === 'blue') {
 			$(this).addClass('blue-active');
+			playSound('audio/simonSound3.mp3').play();
 			setTimeout(function() {
 				$(this).removeClass('blue-active');
 			}.bind($(this)), 500);
 			playerSeq.push(BLUE);
 		} else if (color === 'yellow') {
 			$(this).addClass('yellow-active');
+			playSound('audio/simonSound4.mp3').play();
 			setTimeout(function() {
 				$(this).removeClass('yellow-active');
 			}.bind($(this)), 500);
@@ -66,21 +69,25 @@ function padHighlightAndSound() {
 		} else {		
 			if (givenSeq[i] === RED) {
 				$('.red').addClass('red-active');
+				playSound('audio/simonSound1.mp3').play();
 				setTimeout(function() {
 					$('.red').removeClass('red-active');
 				}, 500);
 			} else if (givenSeq[i] === GREEN) {
 				$('.green').addClass('green-active');
+				playSound('audio/simonSound2.mp3').play();
 				setTimeout(function() {
 					$('.green').removeClass('green-active');
 				}, 500);
 			} else if (givenSeq[i] === BLUE) {
 				$('.blue').addClass('blue-active');
+				playSound('audio/simonSound3.mp3').play();
 				setTimeout(function() {
 					$('.blue').removeClass('blue-active');
 				}, 500);
 			} else if (givenSeq[i] === YELLOW) {
 				$('.yellow').addClass('yellow-active');
+				playSound('audio/simonSound4.mp3').play();
 				setTimeout(function() {
 					$('.yellow').removeClass('yellow-active');
 				}, 500);
@@ -88,4 +95,10 @@ function padHighlightAndSound() {
 			i++;
 		}
 	}, 1000);
+}
+
+function playSound(path) {
+	var sound = new Audio();
+	sound.src = path;
+	return sound;
 }
