@@ -148,6 +148,23 @@
 	position: absolute;
 	z-index: 10;
 	display: none;
+	width: 100vw;
+	height: 100vh;
+	text-align: center;
+	padding-top: 40vh;
+	background-color: rgba(0,0,0, 0.7);
+}
+
+.victory-message p {
+	padding: 0;
+	margin: 0;
+	font-size: 72px;
+	font-weight: 800;
+	color: greenyellow;
+}
+
+.show {
+	display: block;
 }
 
 

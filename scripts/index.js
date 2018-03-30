@@ -11,11 +11,13 @@ var strictMode = false;
 
 $(document).ready(function() {
 	$('.start').click(function(event) {
-		step++;
-		$('.counter').text(step);
-		var randomNum = Math.floor(Math.random()*4);
-		givenSeq.push(randomNum);
-		padHighlightAndSound();
+		if (gameOn) {
+			step++;
+			$('.counter').text(step);
+			var randomNum = Math.floor(Math.random()*4);
+			givenSeq.push(randomNum);
+			padHighlightAndSound();
+		}	
 	});
 
 	$('.switch').click(function() {
@@ -26,6 +28,11 @@ $(document).ready(function() {
 		} else {
 			inner.css('transform', 'translateX(0)');
 			gameOn = false;
+			step = 0;
+			givenSeq = [];
+			playerSeq = [];
+			strictMode = false;
+			$('.counter').text(step);
 		}
 	});
 
@@ -67,6 +74,13 @@ $(document).ready(function() {
 					$(this).removeClass('yellow-active');
 				}.bind($(this)), 500);
 				playerSeq.push(YELLOW);
+		} 
+		if (step == 5 && playerSeq.length === step && JSON.stringify(givenSeq) === JSON.stringify(playerSeq)) {
+			step = 0;
+			givenSeq = [];
+			playerSeq = [];
+			strictMode = false;
+			$('.victory-message').addClass('show');
 		}	
 		if (step > 0 && playerSeq.length === step && JSON.stringify(givenSeq) === JSON.stringify(playerSeq)) {
 			step++;
@@ -89,7 +103,12 @@ $(document).ready(function() {
 	});
 
 	$('.strict').click(function() {
-		strictMode = !strictMode;
+		if (gameOn) strictMode = !strictMode;
+	});
+
+	$('.victory-message').click(function() {
+		$(this).removeClass('show');
+		$('.counter').text(step);
 	});
 });
 
